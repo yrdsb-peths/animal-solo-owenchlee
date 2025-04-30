@@ -10,6 +10,7 @@ public class MyWorld extends World
 {
     public int score = 0;
     Label scoreLabel;
+    int baseSpeed = 2;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -44,13 +45,18 @@ public class MyWorld extends World
     public void increaseScore(){
        score++; 
        scoreLabel.setValue(score);
+       
+       if(score % 5 == 0){
+           baseSpeed++;
+       }
     }
     /**
      * Create a new apple at a random location at the top of the screen
      */
     public void createApple(){
         Apple apple = new Apple();
-        int x = Greenfoot.getRandomNumber(600);
+        apple.setSpeed(baseSpeed);
+        int x = Greenfoot.getRandomNumber(getWidth());
         int y = 0;
         addObject(apple, x, y);
     }
