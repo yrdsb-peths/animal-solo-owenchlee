@@ -10,7 +10,6 @@ public class MyWorld extends World
 {
     public int score = 0;
     Label scoreLabel;
-    int baseSpeed = 2;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -19,8 +18,8 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1, false); 
-        setBackground("Background.jpg");
         
+        // Create the elephant object
         Elephant elephant = new Elephant();
         addObject(elephant, 300, 300);
         
@@ -47,18 +46,13 @@ public class MyWorld extends World
     public void increaseScore(){
        score++; 
        scoreLabel.setValue(score);
-       
-       if(score % 5 == 0){
-           baseSpeed++;
-       }
     }
     /**
      * Create a new apple at a random location at the top of the screen
      */
     public void createApple(){
         Apple apple = new Apple();
-        apple.setSpeed(baseSpeed);
-        int x = Greenfoot.getRandomNumber(getWidth());
+        int x = Greenfoot.getRandomNumber(600);
         int y = 0;
         addObject(apple, x, y);
     }
